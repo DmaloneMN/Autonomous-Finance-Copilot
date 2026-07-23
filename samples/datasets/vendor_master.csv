@@ -1,0 +1,13 @@
+vendor_id,vendor_name,category,payment_terms,currency,country,contract_start,contract_end,annual_spend_usd,status
+V-001,Microsoft Azure,Cloud Services,NET-30,USD,US,2023-01-01,2025-12-31,150000.00,active
+V-002,Salesforce,Software Subscriptions,NET-30,USD,US,2022-06-01,2025-05-31,50400.00,active
+V-003,WeWork,Facilities,NET-15,USD,US,2023-03-01,2024-02-28,105000.00,expired
+V-004,Deloitte,Professional Services,NET-45,EUR,DE,2024-01-01,2024-12-31,140000.00,active
+V-005,AWS,Cloud Services,NET-30,USD,US,2021-09-01,2026-08-31,117600.00,active
+V-006,PricewaterhouseCoopers,Professional Services,NET-45,EUR,GB,2024-01-01,2024-12-31,112000.00,active
+V-007,Oracle,Software Subscriptions,NET-60,USD,US,2020-04-01,2025-03-31,177600.00,active
+V-008,Workday,Software Subscriptions,NET-30,USD,US,2022-11-01,2025-10-31,76800.00,active
+V-009,Snowflake,Cloud Services,NET-30,USD,US,2023-07-01,2025-06-30,135600.00,active
+V-010,Accenture,Professional Services,NET-45,EUR,IE,2024-01-01,2024-12-31,504000.00,active
+V-011,Google Cloud,Cloud Services,NET-30,USD,US,2023-01-01,2025-12-31,86400.00,active
+V-012,GitHub,Software Subscriptions,NET-30,USD,US,2023-04-01,2026-03-31,21600.00,active

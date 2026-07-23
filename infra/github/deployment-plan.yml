@@ -1,0 +1,27 @@
+# Deployment plan for Autonomous Finance Copilot
+# This file describes the target deployment configuration per environment.
+# It is NOT a GitHub Actions workflow — it is a reference document.
+
+project: autonomous-finance-copilot
+
+environments:
+  dev:
+    resource_group: rg-afc-dev
+    region: eastus2
+    container_app_name: ca-afc-dev
+    replicas: 1
+    auto_deploy: true
+
+  staging:
+    resource_group: rg-afc-staging
+    region: eastus2
+    container_app_name: ca-afc-staging
+    replicas: 2
+    auto_deploy: true
+
+  prod:
+    resource_group: rg-afc-prod
+    region: eastus2
+    container_app_name: ca-afc-prod
+    replicas: 3
+    auto_deploy: false
