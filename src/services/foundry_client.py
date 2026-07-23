@@ -1,6 +1,6 @@
 """Factory for Microsoft Foundry project clients."""
-from azure.identity import DefaultAzureCredential
 from azure.ai.projects import AIProjectClient
+from azure.identity import DefaultAzureCredential
 
 from src.config import settings
 
