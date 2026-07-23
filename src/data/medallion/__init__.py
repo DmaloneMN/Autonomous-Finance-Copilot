@@ -1,0 +1,1 @@
+"""Medallion architecture package marker."""

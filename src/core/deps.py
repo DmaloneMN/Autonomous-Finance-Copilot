@@ -2,10 +2,14 @@
 from functools import lru_cache
 
 from src.agents.orchestrator import OrchestratorAgent
-from src.services.kernel_factory import build_kernel
+from src.services.foundry_agent_service import FoundryAgentService
+
+
+@lru_cache
+def get_foundry_service() -> FoundryAgentService:
+    return FoundryAgentService()
 
 
 @lru_cache
 def get_orchestrator() -> OrchestratorAgent:
-    kernel = build_kernel()
-    return OrchestratorAgent(kernel=kernel)
+    return OrchestratorAgent(foundry_service=get_foundry_service())

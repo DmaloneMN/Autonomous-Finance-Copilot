@@ -20,6 +20,10 @@ class Settings(BaseSettings):
     azure_openai_deployment_embedding: str = Field("text-embedding-3-large", alias="AZURE_OPENAI_DEPLOYMENT_EMBEDDING")
     azure_openai_api_version: str = Field("2024-05-01-preview", alias="AZURE_OPENAI_API_VERSION")
 
+    foundry_project_endpoint: str = Field("", alias="FOUNDRY_PROJECT_ENDPOINT")
+    foundry_agent_model: str = Field("gpt-4o", alias="FOUNDRY_AGENT_MODEL")
+    foundry_agent_api_version: str = Field("2025-05-01", alias="FOUNDRY_AGENT_API_VERSION")
+
     azure_search_endpoint: str = Field("", alias="AZURE_SEARCH_ENDPOINT")
     azure_search_api_key: str = Field("", alias="AZURE_SEARCH_API_KEY")
     azure_search_index_finance: str = Field("finance-knowledge", alias="AZURE_SEARCH_INDEX_FINANCE")
