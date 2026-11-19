@@ -1,131 +1,345 @@
 # Autonomous Finance Copilot
 
-Autonomous Finance Copilot is a **Foundry-first, FastAPI-based multi-agent finance platform** that integrates **Microsoft Fabric**, **Delta medallion pipelines**, **Azure OpenAI**, and **Azure AI Search**.
+## Enterprise Multi\-Agent Finance Platform for Microsoft Fabric and Azure AI Foundry
 
-## Current architecture
+Autonomous Finance Copilot is an enterprise\-grade AI platform that combines Microsoft Fabric, Azure AI Foundry, Azure OpenAI, Azure AI Search, and Delta Lake architecture to automate financial analysis, forecasting, anomaly detection, and executive reporting.
 
-This repository uses **Microsoft Foundry Agent Service as the primary multi-agent runtime and orchestration platform**. The current implementation focuses on:
+Built using a Foundry\-first multi\-agent architecture, the platform enables finance organizations to transform raw operational data into executive\-ready insights through autonomous agent collaboration and governed data products.
 
-- production-grade API structure with FastAPI
-- finance agent coordination and orchestration
-- Fabric-aligned data services
-- Delta-based Bronze, Silver, and Gold medallion layers
-- retrieval integration points with Azure AI Search
-- evaluation scaffolding for agent outcomes
-- Docker-based local development and deployment readiness
+---
 
-## What it does
+## Business Challenge
 
-The platform exposes a FastAPI API that coordinates specialized finance agents:
+Finance teams spend significant time collecting, reconciling, analyzing, and summarizing data before meaningful decisions can be made.
 
-- Orchestrator Agent
-- Variance Analysis Agent
-- Budget Agent
-- Forecast Agent
-- Vendor Analysis Agent
-- Anomaly Detection Agent
-- Executive Summary Agent
+Common challenges include:
 
-These agents operate on finance data staged through Bronze, Silver, and Gold layers and are designed to support CFO, FP&A, procurement, and finance operations scenarios.
+- Budget vs. actual variance analysis
+- Financial forecasting and planning
+- Vendor spend optimization
+- Cost anomaly detection
+- Executive reporting
+- Manual month\-end review processes
+- Data silos across ERP, procurement, and finance systems
 
-## Core capabilities
+Autonomous Finance Copilot addresses these challenges through a scalable AI and data platform architecture built on Microsoft technologies.
 
-- FastAPI backend with versioned routes
-- Microsoft Foundry Agent Service-oriented agent orchestration
-- Azure OpenAI-backed model integration points
-- Azure AI Search retrieval service scaffolding
-- Microsoft Fabric / ADLS lakehouse integration scaffolding
-- Medallion architecture services for Bronze, Silver, and Gold data zones
-- Delta table write patterns via `deltalake`
-- Evaluation scoring scaffold for agent outcomes
-- Docker and docker-compose support
+---
 
-## Repository structure
+## Solution Overview
 
-```text
-src/
-  agents/             Foundry-managed finance agents and orchestration
-  api/                FastAPI routes and endpoint contracts
-  core/               middleware, logging, exceptions, DI
-  data/medallion/     Bronze/Silver/Gold Delta pipeline services
-  evaluation/         scoring and evaluation utilities
-  services/           Foundry, Search, Fabric service integrations
-infra/
-  bicep/              Azure infrastructure templates
-  github/             deployment reference assets
-samples/
-  datasets/           local CSV datasets for finance scenarios
-tests/
-  unit/               unit tests
-  integration/        API/integration tests
-.github/workflows/    CI/CD pipelines
-docs/                 architecture and delivery docs
-```
+The platform combines:
 
-## Quick start
+### Data Platform
 
-### 1. Clone and configure
+- Microsoft Fabric Lakehouse
+- Delta Lake storage
+- Bronze / Silver / Gold Medallion Architecture
+- Data Engineering Pipelines
+- Semantic Models
+- Enterprise Data Products
 
-```bash
-cp .env.example .env
-python -m venv .venv
-source .venv/bin/activate
-pip install -e .[dev]
-```
+### AI Platform
 
-### 2. Run locally
+- Azure AI Foundry Agent Service
+- Azure OpenAI
+- Azure AI Search
+- Retrieval\-Augmented Generation (RAG)
+- Agent Evaluation Framework
 
-```bash
-uvicorn src.main:app --reload --port 8000
-```
+### Application Platform
 
-### 3. Run with Docker Compose
+- FastAPI
+- REST APIs
+- Docker Containers
+- Enterprise Integration Services
 
-```bash
-docker-compose up --build
-```
+### Finance Intelligence Layer
 
-### 4. Run tests
+- Variance Analysis
+- Budget Monitoring
+- Forecasting
+- Vendor Optimization
+- Anomaly Detection
+- Executive Summaries
 
-```bash
-pytest tests/ -v
-```
+---
 
-## Environment variables
+## Reference Architecture
 
-Configure the following in `.env`:
+┌───────────────────────────────────────────┐
 
-- Azure OpenAI endpoint and deployment settings
-- Foundry project endpoint
-- Azure AI Search endpoint and key
-- Microsoft Fabric workspace and lakehouse identifiers
-- ADLS connection string and container
+│            Source Systems                 │
 
-See `.env.example` for the full list.
+├───────────────────────────────────────────┤
 
-## API endpoints
+│ ERP │ AP │ AR │ Procurement │ CSV │ APIs │
 
-- `GET /health`
-- `POST /api/v1/agents/run`
-- `POST /api/v1/analysis/variance`
-- `POST /api/v1/budget/analyze`
-- `POST /api/v1/forecast/generate`
-- `POST /api/v1/vendor/analyze`
-- `POST /api/v1/anomaly/detect`
-- `POST /api/v1/reports/executive-summary`
+└───────────────────────────────────────────┘
 
-## Future extensibility
+                    │
 
-**Semantic Kernel may be introduced later** as a complementary plugin and experimentation layer for tool/function abstraction, but it is intentionally **not a first-class dependency in the current implementation** while the core orchestration architecture is being stabilized.
+                    ▼
 
-## Delivery status
+         ┌──────────────────┐
 
-This repository currently provides a strong scaffold / MVP foundation. Some services, especially Foundry runtime execution and production deployment plumbing, are intentionally stubbed and should be hardened before enterprise rollout.
+         │ Bronze Layer      │
 
-## Next recommended enhancements
+         │ Raw Delta Tables  │
 
-- Implement full Foundry agent lifecycle operations
-- Add real retrieval-augmented generation flows with Azure AI Search
-- Persist Delta tables to configured lakehouse/object storage paths
-- Add auth, RBAC, secrets management, telemetry, and policy enforcement
-- Add richer evaluation benchmarks and regression testing
+         └──────────────────┘
+
+                    │
+
+                    ▼
+
+         ┌──────────────────┐
+
+         │ Silver Layer      │
+
+         │ Cleansed Data     │
+
+         └──────────────────┘
+
+                    │
+
+                    ▼
+
+         ┌──────────────────┐
+
+         │ Gold Layer        │
+
+         │ Business Metrics  │
+
+         └──────────────────┘
+
+                    │
+
+                    ▼
+
+      ┌──────────────────────────┐
+
+      │ Finance Data Products     │
+
+      └──────────────────────────┘
+
+                    │
+
+                    ▼
+
+      ┌──────────────────────────┐
+
+      │ Azure AI Search / RAG     │
+
+      └──────────────────────────┘
+
+                    │
+
+                    ▼
+
+      ┌──────────────────────────┐
+
+      │ Foundry Agent Service     │
+
+      └──────────────────────────┘
+
+                    │
+
+                    ▼
+
+┌───────────────────────────────────────────┐
+
+│         Finance Multi\-Agent System        │
+
+├───────────────────────────────────────────┤
+
+│ Orchestrator Agent                        │
+
+│ Variance Analysis Agent                   │
+
+│ Forecast Agent                            │
+
+│ Budget Agent                              │
+
+│ Vendor Analysis Agent                     │
+
+│ Anomaly Detection Agent                   │
+
+│ Executive Summary Agent                   │
+
+└───────────────────────────────────────────┘
+
+                    │
+
+                    ▼
+
+      Executive Finance Insights
+
+---
+
+## Multi\-Agent Architecture
+
+### Orchestrator Agent
+
+Coordinates workflow execution, routes requests, manages agent collaboration, and consolidates responses.
+
+### Variance Analysis Agent
+
+Identifies budget versus actual deviations and provides explanations for material differences.
+
+### Budget Agent
+
+Evaluates budget utilization and spending trends across business units.
+
+### Forecast Agent
+
+Generates financial forecasts using historical and operational data.
+
+### Vendor Analysis Agent
+
+Detects vendor concentration risks, spending patterns, and optimization opportunities.
+
+### Anomaly Detection Agent
+
+Identifies abnormal financial events, unusual spending activity, and emerging risks.
+
+### Executive Summary Agent
+
+Transforms analytical outputs into CFO\-ready business narratives and recommendations.
+
+---
+
+## End\-to\-End Finance Workflow
+
+### Example Scenario
+
+Monthly Financial Review
+
+#### Input Sources
+
+- General Ledger
+- Budget Files
+- Vendor Spend Data
+- Procurement Systems
+- ERP Transactions
+
+#### Processing
+
+1. Data ingested into Bronze layer
+2. Data standardized in Silver layer
+3. Business KPIs generated in Gold layer
+4. Azure AI Search indexes finance knowledge
+5. Finance agents execute analysis
+6. Executive Summary Agent produces final report
+
+#### Output
+
+- Variance explanations
+- Forecast predictions
+- Vendor optimization recommendations
+- Risk alerts
+- Executive summary report
+
+---
+
+## Technology Stack
+
+| Layer | Technology |
+| --- | --- |
+| AI Agents | Azure AI Foundry Agent Service |
+| LLMs | Azure OpenAI |
+| Retrieval | Azure AI Search |
+| Data Platform | Microsoft Fabric |
+| Storage | OneLake |
+| Data Architecture | Delta Lake |
+| Processing | Spark |
+| APIs | FastAPI |
+| Containerization | Docker |
+| Governance | Purview / Fabric Governance |
+| Reporting | Power BI |
+
+---
+
+## Key Features
+
+✅ Foundry\-First Multi\-Agent Architecture
+
+✅ Microsoft Fabric Lakehouse Integration
+
+✅ Delta Medallion Architecture
+
+✅ Azure OpenAI Integration
+
+✅ Azure AI Search RAG Capabilities
+
+✅ Finance Domain Intelligence
+
+✅ Agent Evaluation Framework
+
+✅ Containerized Deployment
+
+✅ Enterprise API Layer
+
+✅ Extensible Agent Framework
+
+---
+
+## Target Personas
+
+### CFO
+
+Receive executive\-level financial insights and strategic recommendations.
+
+### FP&A Teams
+
+Automate forecasting, variance analysis, and planning processes.
+
+### Procurement Organizations
+
+Monitor vendor performance, spending trends, and sourcing opportunities.
+
+### Finance Operations
+
+Detect anomalies and improve operational efficiency.
+
+### Data & AI Teams
+
+Deploy a reusable enterprise architecture pattern for intelligent finance applications.
+
+---
+
+## Roadmap
+
+### Current
+
+- Multi\-agent orchestration framework
+- Fabric integration scaffolding
+- Azure AI Search integration
+- FastAPI services
+- Evaluation framework
+
+### Next Release
+
+- Semantic model integration
+- Power BI embedded analytics
+- Copilot Studio integration
+- Agent memory and context management
+- Real\-time financial monitoring
+- Multi\-domain business intelligence agents
+
+---
+
+## Why This Project Matters
+
+Autonomous Finance Copilot demonstrates how enterprise organizations can combine governed data platforms, AI agents, and business intelligence to create autonomous finance operations.
+
+Rather than building another chatbot, this project showcases a practical enterprise architecture pattern that integrates Microsoft Fabric, Azure AI Foundry, Azure OpenAI, and Azure AI Search into a scalable business solution capable of supporting real\-world CFO, FP&A, procurement, and finance operations teams.
+
+---
+
+## Author
+
+Enterprise Data & AI Architect
+
+Specializing in Microsoft Fabric, Azure AI Foundry, Data Platforms, RAG Architectures, and Enterprise AI Solutions.
+
